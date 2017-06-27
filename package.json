@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node ./crawler/app.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.0.0",
+    "node-fetch": "^1.7.1",
+    "pug": "^2.0.0-rc.2",
+    "pug-bootstrap": "^0.0.15",
+    "socket.io": "^2.0.3"
+  }
+}

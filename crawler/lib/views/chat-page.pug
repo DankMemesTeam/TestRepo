@@ -1,0 +1,25 @@
+extends ../../../node_modules/pug-bootstrap/_bootstrap
+block body
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js'
+  integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
+  crossorigin='anonymous')
+    script(src='/socket.io/socket.io.js')
+    script
+        include ./../controllers/chat-controller.js
+    h1.header Chat with strangers
+    hr
+    div.container
+        div.row
+            div.col-md-4
+                div.well
+                    h3 Online users
+                    ul.list-group#users
+            div.col-md-8
+                div.well
+                    ul#chat
+                form#message-form(action='')
+                    div.form-group
+                        label Enter message
+                        textarea.form-control#message
+                        br
+                        div.btn.btn-primary#sendBtn Send message

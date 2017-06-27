@@ -1,0 +1,14 @@
+extends ../../../node_modules/pug-bootstrap/_bootstrap
+block body
+	div.page-header
+		h1 Hello #{name}, here are today's films
+	div.row
+		div.col-md-2
+			div.well
+				a.btn.btn-primary(href='/chat') Go to chat
+		div.col-md-8
+			div.well
+				ul.list-group
+					each movie in movies
+						li.list-group-item #{movie}
+	
