@@ -1,7 +1,8 @@
-/* globals  __dirname */
+// /* globals  __dirname */
 
 const express = require('express');
 const pug = require('pug');
+const viewExtensions = require('../lib/views/views-extensions');
 
 const init = (movies) => {
     const app = express();
@@ -10,11 +11,18 @@ const init = (movies) => {
     app.set('view engine', 'pug');
 
     app.get('/', (req, res) => {
-        console.log(res);
-        const compiledTemplate = pug.compileFile('./lib/views/main-page.pug');
-        const response = compiledTemplate({ title: 'DankMemes Team', name: 'Mitko Stoikov', 'movies': movies });
-
-        res.send(response);
+        // console.log(res);
+        viewExtensions.extensions.getCompiledTemplate('main-page')
+            .then((template) => {
+                return template({
+                    title: 'DankMemes Team',
+                    name: 'Mitko Stoikov',
+                    'movies': movies,
+                });
+            })
+            .then((html) => {
+                res.send(html);
+            });
     });
 
     app.get('/chat', (req, res) => {
