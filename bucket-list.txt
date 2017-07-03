@@ -1,7 +1,0 @@
-Bucket list: 
-
-1 - implement register / login functionality
-
-2 - implement chat with users and message names
-
-3 - research more about structuring aplication

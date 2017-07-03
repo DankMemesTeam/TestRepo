@@ -1,5 +1,6 @@
-const chatRouter = require('./chat-router');
+const controllers = require('../controllers');
 
-module.exports = {
-    chatRouter,
+module.exports = (app) => {
+    require('./chat-router')(app, controllers.chatController);
+    require('./home-router')(app, controllers.homeController);
 };

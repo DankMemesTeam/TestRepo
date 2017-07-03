@@ -1,11 +1,7 @@
-extends ../../../node_modules/pug-bootstrap/_bootstrap
-block body
-    script(src='https://code.jquery.com/jquery-3.2.1.min.js'
-  integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
-  crossorigin='anonymous')
-    script(src='/socket.io/socket.io.js')
+extends ./shared/_master.pug
+block append page-content
     script
-        include ./../controllers/chat-controller.js
+        include ../controllers/socket-controller.js
     h1.header Chat with strangers
     hr
     div.container
