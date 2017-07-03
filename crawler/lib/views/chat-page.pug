@@ -13,6 +13,9 @@ block append page-content
             div.col-md-8
                 div.well
                     ul#chat
+                        if messages
+                            each message in messages
+                                li.list-group-item #{message.content}
                 form#message-form(action='')
                     div.form-group
                         label Enter message

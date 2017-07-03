@@ -1,3 +1,5 @@
+const data = require('../data');
+
 module.exports = (app) => {
     const server = require('http').createServer(app);
     const io = require('socket.io')(server);
@@ -9,8 +11,14 @@ module.exports = (app) => {
             console.log('A user has disconnected');
         });
 
-        socket.on('chat message', (data) => {
-            io.sockets.emit('new message', { msg: data });
+        socket.on('chat message', (messageData) => {
+            data.messageData.createMessage('lllevski', messageData)
+                .then((_) => {
+                    io.sockets.emit('new message', { msg: messageData });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         });
     });
 
