@@ -12,7 +12,7 @@ module.exports = () => {
     const app = express();
     require('../lib/routes')(app, data);
 
-    const server = socket(app);
+    const server = socket(app, connection);
 
     return server;
 };

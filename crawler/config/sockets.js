@@ -1,6 +1,6 @@
 const data = require('../data');
 
-module.exports = (app) => {
+module.exports = (app, db) => {
     const server = require('http').createServer(app);
     const io = require('socket.io')(server);
 
@@ -12,7 +12,7 @@ module.exports = (app) => {
         });
 
         socket.on('chat message', (messageData) => {
-            data.messageData.createMessage('lllevski', messageData)
+            data.messageData(db).createMessage('lllevski', messageData)
                 .then((_) => {
                     io.sockets.emit('new message', { msg: messageData });
                 })

@@ -4,19 +4,30 @@ module.exports = (connection, collectionName) => {
             .then((db) => {
                 const collection = db.collection(collectionName);
 
-                const wrappedCollection = {
-                    collectionName: collection.collectionName,
-                    namespace: collection.namespace,
-                    find: collection.find,
-                    findOne: collection.findOne,
-                    findAndModify: collection.findAndModify,
-                    insertOne: collection.insertOne,
-                    deleteOne: collection.deleteOne,
-                    options: collection.options,
-                    stats: collection.stats,
+                const find = (query, projection) => {
+                    return collection.find(query, projection);
                 };
 
-            // When replaced with the upper collection works perfectly but wrapped object breaks something
+                const insertOne = (obj) => {
+                    return collection.insertOne(obj);
+                };
+
+                const findOne = (query, projection) => {
+                    return collection.findOne(query, projection);
+                };
+
+                const deleteOne = (query) => {
+                    return collection.deleteOne(query);
+                }
+
+                const wrappedCollection = {
+                    find: find,
+                    findOne: findOne,
+                    findAndModify: collection.findAndModify,
+                    insertOne: insertOne,
+                    deleteOne: deleteOne,
+                };
+
                 resolve(wrappedCollection);
             })
             .catch((err) => {
