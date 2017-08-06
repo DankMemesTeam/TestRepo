@@ -1,4 +1,6 @@
 extends ./shared/_master.pug
+block append styles
+	script(src='./../controllers/test-controller.js')
 block append page-content
 	div.page-header
 		h1 Hello #{name}, here are today's films
@@ -8,7 +10,7 @@ block append page-content
 				a.btn.btn-primary(href='/chat') Go to chat
 		div.col-md-8
 			div.well
-				ul.list-group
-					each movie in movies
-						li.list-group-item #{movie}
-	
+				form(action="/test/upload" method="POST")
+					input#usernameInput.form-control(name="fileToUpload", type="file", autofocus='')
+					button.btn.btn-primary(type='submit')
+						| Send
