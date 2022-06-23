@@ -6,7 +6,7 @@
   "dependencies": {
     "express": "^4.15.3",
     "jquery": "^3.2.1",
-    "jsdom": "^11.0.0",
+    "jsdom": "^16.5.0",
     "mongodb": "^2.2.29",
     "node-fetch": "^1.7.1",
     "pug": "^2.0.0-rc.2",
